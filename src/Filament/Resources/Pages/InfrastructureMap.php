@@ -51,7 +51,7 @@ class InfrastructureMap extends Page
      */
     public static function getNavigationGroup(): string
     {
-        return trans('infrastructure.navigation');
+        return trans('infrastructure::infrastructure.navigation');
     }
 
     /**
@@ -62,7 +62,7 @@ class InfrastructureMap extends Page
      */
     public static function getNavigationLabel(): string
     {
-        return trans('infrastructure.map');
+        return trans('infrastructure::infrastructure.map.title');
     }
 
     /**

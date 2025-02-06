@@ -63,7 +63,7 @@ class NodeResource extends Resource {
      * @return string
      */
     public static function getNavigationLabel(): string {
-        return trans('infrastructure.nodes.plural');
+        return trans('infrastructure::infrastructure.nodes.plural');
     }
 
     /**

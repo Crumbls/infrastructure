@@ -25,6 +25,8 @@ class InfrastructureServiceProvider extends ServiceProvider
         // Register package views with 'infrastructure' namespace
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'infrastructure');
 
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'infrastructure');
+
         // Define publishable assets for the package
         $this->publishes([
             // Publish configuration file
