@@ -1,62 +1,95 @@
 <?php
-
 return [
-    // Layout wrapper for the infrastructure map view
     'view' => [
-        'layout' => 'layouts.app',  // Default Laravel layout
-        'section' => 'content',     // Content section name
-        'standalone' => false       // If true, uses no layout wrapper
+        'standalone' => true
     ],
 
     'layout' => [
-        // Layout engine: 'force', 'hierarchical', 'circular'
-        'type' => 'force',
-
+        'type' => 'hierarchical',
         'force' => [
             'gravitationalConstant' => -2000,
             'springLength' => 150,
             'springConstant' => 0.04,
             'damping' => 0.09,
         ],
-
         'hierarchical' => [
-            'direction' => 'UD', // UD = Up-Down, DU = Down-Up, LR = Left-Right
+            'direction' => 'LR',
             'sortMethod' => 'directed',
-            'levelSeparation' => 150,
+            'levelSeparation' => 250,
             'nodeSpacing' => 100
         ],
-
         'circular' => [
-            'radius' => null, // Auto-calculated if null
+            'radius' => null,
             'rotationAngle' => 0,
             'nodeSpacing' => 100
         ]
     ],
 
-    'nodes' => [
-        'types' => [
-            'server' => [
-                'shape' => 'box',
-                'size' => 25,
-                'color' => '#1a73e8'
+    'visualization' => [
+        'height' => '70vh',
+        'border' => '1px solid rgb(var(--gray-200))',
+        'borderRadius' => '0.5rem',
+
+        'nodes' => [
+            'font' => [
+                'color' => '#000000',
+                'size' => 14
             ],
-            'database' => [
-                'shape' => 'database',
-                'size' => 25,
-                'color' => '#34a853'
-            ],
-            'site' => [
-                'shape' => 'dot',
-                'size' => 16,
-                'color' => '#4285f4'
+            'borderWidth' => 2,
+            'shadow' => true
+        ],
+
+        'edges' => [
+            'width' => 2,
+            'smooth' => [
+                'type' => 'cubicBezier',
+                'forceDirection' => 'horizontal'
             ]
         ],
 
-        'statuses' => [
-            'operational' => '#00ff00',
-            'warning' => '#ffff00',
-            'error' => '#ff0000',
-            'maintenance' => '#ffa500'
-        ]
+        'physics' => [
+    'enabled' => false,  // Disable physics for hierarchical layout
+            'stabilization' => false
+        ],
+
+        'layout' => [
+    'hierarchical' => [
+        'enabled' => true,
+        'direction' => 'LR',
+        'sortMethod' => 'directed',
+        'levelSeparation' => 250,
+        'nodeSpacing' => 100,
+        'treeSpacing' => 200
     ]
+],
+
+        'interaction' => [
+    'hover' => true,
+    'multiselect' => true,
+    'dragNodes' => true
+]
+    ],
+
+    'nodes' => [
+    'types' => [
+        'server' => [
+            'shape' => 'box',
+            'size' => 30
+        ],
+        'database' => [
+            'shape' => 'database',
+            'size' => 30
+        ],
+        'site' => [
+            'shape' => 'dot',
+            'size' => 20
+        ]
+    ],
+    'statuses' => [
+        'operational' => '#10b981',
+        'warning' => '#eab308',
+        'error' => '#ef4444',
+        'maintenance' => '#6366f1'
+    ]
+]
 ];
