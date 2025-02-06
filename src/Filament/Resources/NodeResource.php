@@ -126,10 +126,10 @@ class NodeResource extends Resource {
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('_lft')
-                    ->label('Left'),
-                TextColumn::make('_rgt')
-                    ->label('Right'),
+                TextColumn::make('type')
+                    ->searchable(),
+                TextColumn::make('status')
+                    ->searchable(),
             ])
             ->defaultSort('_lft')
             ->actions([
